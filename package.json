@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "docker-compose up",
+    "build": "docker-compose build",
+    "up": "npm run build && npm run start"
+  },
+  "description": "weather-apis",
+  "author": "manju",
+  "license": "MIT"
+}
