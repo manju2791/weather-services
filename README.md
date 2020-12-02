@@ -9,14 +9,14 @@ which is established using Redis transport layer. The services can be independen
 and deployed to Docker. 
  
  
- ##Build and run
+## Build and run
 To build and run the project on your local machine use the command `npm run up`
  
 To build docker images for the services use the command `npm run build`
 
 To run the containers on Docker use the command `npm run start` 
 
-##Endpoints
+## Endpoints
 ### `GET /cities?lat={latitude}&lng={longitude}`
 List the available cities around the specified latitude/longitude within a radius of 10 kilometers.
 ```
