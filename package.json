@@ -3,7 +3,8 @@
   "scripts": {
     "start": "docker-compose up",
     "build": "docker-compose build",
-    "up": "npm run build && npm run start"
+    "up": "npm run build && npm run start",
+    "test": "docker-compose -f docker-compose.test.yaml up"
   },
   "description": "weather-apis",
   "author": "manju",

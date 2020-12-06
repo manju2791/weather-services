@@ -1,16 +1,16 @@
 export interface ICityList {
-  id: number;
-  name: string;
+  readonly id: number;
+  readonly name: string;
 }
 
-export class ICity {
+export interface ICity {
   readonly id: number;
   readonly name: string;
   readonly lat: number;
   readonly lng: number;
 }
 
-export class ICityWeather {
+export interface ICityWeather {
   readonly type: string;
   readonly type_description: string;
   readonly sunrise: string;

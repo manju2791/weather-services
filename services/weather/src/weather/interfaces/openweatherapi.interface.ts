@@ -1,4 +1,4 @@
-export class IWeatherAPI {
+export interface IWeatherAPI {
   readonly coord: ICoord;
   readonly name: string;
   readonly id: number;
@@ -14,7 +14,7 @@ export class IWeatherAPI {
   readonly cod: number;
 }
 
-export class ICityListAttributes {
+export interface ICityListAttributes {
   readonly coord: ICoord;
   readonly name: string;
   readonly id: number;
@@ -28,7 +28,7 @@ export class ICityListAttributes {
   readonly wind: IWeatherWind;
 }
 
-export class ICityListAPI {
+export interface ICityListAPI {
   readonly list: Array<ICityListAttributes>;
 }
 

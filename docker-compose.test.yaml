@@ -1,0 +1,89 @@
+version: '3'
+
+services:
+  weather:
+    image: weather
+    build:
+      context: ./services/weather
+    expose:
+      - 50051
+    depends_on:
+      - redis
+    env_file: 
+      - ./services/weather/environments/.env.development
+    volumes:
+      - ./services/weather:/usr/local/weather
+      - /usr/local/weather/node_modules
+      - /usr/local/weather/dist
+
+    # restart: on-failure
+    
+  gateway:
+    image: gateway
+    build:
+      context: ./services/gateway
+    ports:
+      - 8080:8080
+    depends_on: 
+      - weather
+      - redis
+    env_file: 
+      - ./services/gateway/environments/.env.development
+    volumes:
+      - ./services/gateway:/usr/local/gateway
+      - /usr/local/gateway/node_modules
+      - /usr/local/gateway/dist
+    # restart: on-failure
+
+  redis:
+    image: bitnami/redis:latest
+    container_name: redis_container
+    environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    labels:
+      kompose.service.type: nodeport
+    volumes:
+      - redis_data:/bitnami/redis
+    ports:
+      - 6379:6379
+    
+  e2e-tests:
+    image: gateway
+    command: [sh, -c, "npm run test:e2e"]
+    environment:
+      NODE_ENV: development
+      PORT: 8080
+      REDIS_PORT: 6379
+      REDIS_HOST: 'redis'
+      WEATHER_APIKEY: 'ba7f2324737e426236bdf6cccd9d2346'
+      WEATHER_APIURL: 'https://api.openweathermap.org/data/2.5'
+    volumes:
+      - /usr/local/gateway/dist
+    depends_on:
+      - gateway
+      - weather
+      - redis
+
+  weather-svc-tests:
+    image: weather
+    command: [sh, -c, "npm run test"]
+    environment:
+      NODE_ENV: development
+      PORT: 50051
+      REDIS_PORT: 6379
+      REDIS_HOST: 'redis'
+      WEATHER_APIKEY: 'ba7f2324737e426236bdf6cccd9d2346'
+      WEATHER_APIURL: 'https://api.openweathermap.org/data/2.5'
+    volumes:
+      - /usr/local/weather/dist
+    depends_on:
+      - weather
+      - gateway
+      - redis
+
+volumes: 
+  redis_data:
+
+    
+

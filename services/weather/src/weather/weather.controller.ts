@@ -22,7 +22,7 @@ export class WeatherController {
   }
 
   @MessagePattern(PATTERN.GET_CITY_WEATHER_BY_CITYID)
-  async create(id: number): Promise<ICityWeather> {
-    return await this.weatherSvc.getCityWeather(id);
+  async fetchCityWeather(cityId: number): Promise<ICityWeather> {
+    return await this.weatherSvc.getCityWeather(cityId);
   }
 }

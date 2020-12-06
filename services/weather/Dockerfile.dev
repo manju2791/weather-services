@@ -10,8 +10,6 @@ RUN npm install
 
 COPY . ./
 
-RUN npm run build
-
 EXPOSE 50051
 
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:dev"]

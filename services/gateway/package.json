@@ -1,7 +1,7 @@
 {
   "name": "@weather-mservice/api-gateway",
   "version": "1.0.0",
-  "description": "",
+  "description": "gateway service",
   "main": "main.ts",
   "directories": {
     "test": "test"
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch --onSuccess \"node dist/main.js\"",
+    "start:dev": "tsc-watch --onSuccess \"node dist/src/main.js\"",
     "start:prod": "node dist/main.js",
     "test": "jest",
     "test:watch": "jest --watch",

@@ -1,4 +1,4 @@
-export class IAxiosRequest {
+export interface IAxiosRequest {
   method: string;
   baseURL: string;
   path?: string;

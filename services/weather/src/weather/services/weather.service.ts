@@ -101,7 +101,6 @@ export class WeatherService {
 
   isWithInTenKm(lat1, lon1, lat2, lon2): boolean {
     const distance = DistanceUtilityService.getDistance(lat1, lon1, lat2, lon2);
-    const d = distance <= AREA_RADIUS ? true : false;
-    return d;
+    return distance <= AREA_RADIUS ? true : false;
   }
 }

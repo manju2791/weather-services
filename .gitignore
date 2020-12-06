@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# IDE
+/.idea
+/.vscode
+.project
+*.launch
+.settings/
+
+# misc
+npm-debug.log
+.DS_Store
+
+# tests
+coverage/
+*.test-definitions.ts
+/e2e/*.js
+/e2e/*.map
+
+# dist
+dist/

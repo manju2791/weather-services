@@ -1,9 +1,10 @@
 import { IsNotEmpty, IsNumberString } from 'class-validator';
+import { ErrorMessages } from '../constant/constant';
 
 export class CityFinderDTO {
-  @IsNotEmpty({ message: 'lat required' })
+  @IsNotEmpty({ message: ErrorMessages.LAT_REQUIRED })
   lat: number;
-  @IsNotEmpty({ message: 'lng required' })
+  @IsNotEmpty({ message: ErrorMessages.LNG_REQUIRED })
   lng: number;
 }
 

@@ -26,8 +26,8 @@ export class HttpErrorFilter implements ExceptionFilter {
   }
   handleNotFoundError(error, res) {
     return res.status(HttpStatus.NOT_FOUND).send({
-      code: ResponseErrorCode.NOTFOUND,
-      message: ErrorMessages.NotFound,
+      code: ResponseErrorCode.NOT_FOUND,
+      message: ErrorMessages.NOT_FOUND,
     });
   }
 
